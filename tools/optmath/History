@@ -1,0 +1,37 @@
+linmath:
+
+-Lineare Algebra mit Vektoren und Matrizen
+
+-Sehr viele Tests zur Laufzeit
+
+-Referenzen werden als Referenzen auf einen Ringpuffer
+ zurueckgegeben, um einen Bug ( or is it a feature ? ) 
+ in alten GNU-Compiler-Versionen zu umgehen:
+ Die temporaeren Instanzen auf dem Stack wurden zu selten
+ freigegeben so, dass in Schleifen der virtuelle Speicher
+ sehr grosszuegig gefuellt wurde.
+
+fastmath:
+
+-Die meisten Tests wurden ueber Bord geworfen, um Berechnungen  
+ schneller auszufuehren
+
+-Die schlechte Matrizeninversion aus linmath wurde durch die
+ LU-Zerlegung ersetzt, die die Determinante gleich mit berechnet.
+ Sollte die Determinante sehr klein sein, so kann man die
+ Inverse wegwerfen. Details siehe "Numerical Recipes in C".
+
+
+optmath:
+
+-Der Ringpuffer wird ersatzlos gestrichen in der Hoffnung, neuere
+ Compiler-Versionen wuerden sich gutartiger verhalten...
+
+-Es kommen Read- und Write-Methoden hinzu, die IO ueber Textdateien
+ erlauben.
+
+- private -> protected
+
+- saemtliche Prozeduren, die keine Referenz auf *this zurueckgeben,
+  sondern eine Referenz auf ein temporaeres Objekt, geben nun den
+  reinen Objekttyp zurueck
